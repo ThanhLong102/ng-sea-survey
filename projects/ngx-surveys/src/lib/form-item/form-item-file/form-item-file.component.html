@@ -1,0 +1,49 @@
+<div class="form-group">
+    <div class="col-xs-12 files-set">
+        <div class="files-set-title">{{item.label}}</div>
+        <div [ngClass]="'files-list-'+item.fileType">
+            <div class="file-item" *ngFor="let file of files">
+                <ammo-file-list-item-image *ngIf="item.fileType!=='video'"
+                    [type]="item.fileType"
+                    [file]="file"
+                    [allowDelete]="editable"
+                    (onDelete)="removeFile($event)"
+                >
+                </ammo-file-list-item-image>
+                <ammo-file-list-item-video *ngIf="item.fileType==='video'"
+                    [file]="file"
+                    [allowDelete]="editable"
+                    (onDelete)="removeFile($event)"
+                >
+                </ammo-file-list-item-video>
+            </div>
+        </div>
+        <ngx-file-drop *ngIf="item.multiple || (!item.multiple && files.length<1)"
+            dropZoneLabel="Drop files here"
+            (onFileDrop)="onFileDrop($event)"
+            (onFileOver)="fileOver(true)"
+            (onFileLeave)="fileOver(false)"
+            [multiple]="item.multiple"
+            [accept]="accept"
+            [directory]="false"
+            [disabled]="!editable"
+            [ngClass]="{'file-is-over':fileIsOver}"
+        >
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <span *ngIf="!fileIsOver">
+                        <ng-container *ngIf="item.areaLabel" {{item.areaLabel}}></ng-container>
+                        <ng-container *ngIf="!item.areaLabel"> Drag & Drop Files here <br />or </ng-container>
+                    </span>
+                    <span *ngIf="fileIsOver">Drop files here</span>
+                    <br/>
+                    <button  *ngIf="!fileIsOver" mat-raised-button [disabled]="!editable" color="primary" type="button" (click)="openFileSelector()">{{item.buttonLabel || 'Browse Files'}}</button>
+                </ng-template>
+        </ngx-file-drop>
+        <mat-error *ngIf="item.errors && item.errors.length">
+          <div *ngFor="let error of item.errors">{{error.message}}</div>
+        </mat-error>
+        <mat-hint align="start" *ngIf="!(item.errors && item.errors.length)"><strong>{{item.hint}}</strong> </mat-hint>
+    </div>
+</div>
+
+

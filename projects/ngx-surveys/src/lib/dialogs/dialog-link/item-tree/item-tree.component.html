@@ -1,0 +1,7 @@
+<button mat-button [matMenuTriggerFor]="menu">{{item.name}}</button>
+<mat-menu #menu="matMenu">
+    <button *ngFor="let children of item.children" mat-menu-item
+            (click)="choseChildren({id: item.id, optionValue: children.optionValue})">{{children.label}}</button>
+</mat-menu>
+
+

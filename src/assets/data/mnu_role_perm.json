@@ -1,0 +1,24 @@
+[
+  {
+    "mnuUserPermId": 1,
+    "appType": "M",
+    "spId": "FULL",
+    "productId": "FULL.PAYMENT",
+    "roleId": "CHECKER",
+    "mnuMenuId": 1,
+    "mobile_mnu_cnt": "N",
+    "tablet_mnu_cnt": "N",
+    "pc_mnu_cnt": "N"
+  },
+  {
+    "mnuUserPermId": 1,
+    "appType": "W",
+    "spId": "FULL",
+    "productId": "FULL.PAYMENT",
+    "roleId": "CHECKER",
+    "mnuMenuId": 1,
+    "mobile_mnu_cnt": "Y",
+    "tablet_mnu_cnt": "Y",
+    "pc_mnu_cnt": "Y"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "api": {
+    "baseUrl": "https://api-seapartner.myitsol.com/"
+  },
+  "pageSizeOptions": [
+    5,
+    10,
+    20,
+    50,
+    100
+  ],
+  "pageIndex": 0,
+  "pageSize": 10,
+  "authTokenKey": "Tm8gaW5mbyBmb3IgdQ=="
+}

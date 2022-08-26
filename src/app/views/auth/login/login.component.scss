@@ -1,0 +1,9 @@
+:host {
+    ::ng-deep {
+        .mat-form-field{
+            .mat-form-field-wrapper{
+                padding-right: 11rem;
+            }
+        }
+    }
+}

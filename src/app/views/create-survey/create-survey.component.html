@@ -1,0 +1,309 @@
+<div class="card card-custom" style="min-height: 57rem; margin-top: 6rem">
+
+    <div class="card-header">
+        <h3 class="card-title">
+            <b class="flaticon-squares-3" style="margin-right: 15px"></b>
+            Thêm mới/chỉnh sửa survey
+        </h3>
+        <h3 class="card-title">
+            <button (click)="openAddDialog()" mat-raised-button color="warn">
+                <mat-icon style="margin-top: 5px">add</mat-icon>
+                Gửi duyệt
+            </button>
+            <button class='ml-2' (click)="openAddDialog()" mat-raised-button color="warn">
+                <mat-icon style="margin-top: 5px">save</mat-icon>
+                Lưu
+            </button>
+            <button class='ml-2' (click)="openAddDialog()" mat-raised-button color="accent">
+                <mat-icon style="margin-top: 5px">delete_outline</mat-icon>
+                Xóa
+            </button>
+        </h3>
+    </div><!--END HEADER -->
+
+    <div class="card-body">
+        <fieldset class="col-12" style="border: 2px solid #ECF0F3; margin: 0; padding: 0">
+            <legend style=" font-size: 1rem;width: auto; margin-left: 20px"><label class="col-lg-12"><b>Nhập thông
+                tin</b></label>
+            </legend>
+
+            <div class="form-group row mt-10 mb-10">
+                <label class="col-0.5 pt-3 pb-2 pl-2 pr-4 m-0 ml-14 bg-secondary"><b>MAS012222_0011</b></label>
+                <div class="col-8">
+                    <input class="form-control p-2" type="text" placeholder="Nhập tên bộ khảo sát..."
+                           [(ngModel)]="curPartnerName"
+                           (keyup.enter)="onSearchClick()"/>
+                </div>
+            </div>
+            <div class="form-group row mt-10 mb-10">
+                <div class="col-11 ml-10 mt-2">
+          <textarea class="form-control p-2" type="text" placeholder="Nhập mô tả khảo sát..."
+                    [(ngModel)]="curPartnerName" (keyup.enter)="onSearchClick()"></textarea>
+                </div>
+            </div>
+            <!--END ROW-->
+        </fieldset>
+    </div> <!--END FORM NAME-->
+
+    <div class="card-body mt-3">
+        <fieldset class="col-12" style="border: 2px solid #ECF0F3; margin: 0; padding: 0">
+            <legend style=" font-size: 1rem;width: auto; margin-left: 20px"><label class="col-lg-12"><b>Cấu hình bộ khảo
+                sát</b></label>
+            </legend>
+
+            <div class="form-group row mt-5 pl-5 pr-5">
+                <label class="col-1 p-0 mt-2 text-right">Nền tảng khảo sát</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curPartnerCode">
+                        <option *ngFor="let a of partnerCodes" [ngValue]="a">
+                            <span *ngIf="a==''; else elseBlock">Tất cả</span>
+                            <ng-template #elseBlock>{{a}}</ng-template>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Vị trí hiển thị Survey</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curStatusAgent">
+                        <option *ngFor="let a of statusAgents" [ngValue]="a">
+                            <span *ngIf="a===0">Dừng</span>
+                            <span *ngIf="a===1">Hoạt động</span>
+                            <span *ngIf="a===''">Tất cả</span>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 text-right mt-2">Ngày bắt đầu</label>
+                <div class="col-2">
+                    <input class="form-control p-2" type="date"/>
+                </div>
+                <label class="col-1 p-0 mt-2 text-right">Ngày kết thúc</label>
+                <div class="col-2">
+                    <input class="form-control p-2" type="date"/>
+                </div>
+            </div> <!--END ROW-->
+
+            <div class="form-group row mt-5 pl-5 pr-5">
+                <label class="col-1 p-0 m-0 text-right mt-2">Trạng thái khảo sát</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curPartnerCode">
+                        <option *ngFor="let a of partnerCodes" [ngValue]="a">
+                            <span *ngIf="a==''; else elseBlock">Tất cả</span>
+                            <ng-template #elseBlock>{{a}}</ng-template>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Trạng thái survey</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curStatusAgent">
+                        <option *ngFor="let a of statusAgents" [ngValue]="a">
+                            <span *ngIf="a===0">Dừng</span>
+                            <span *ngIf="a===1">Hoạt động</span>
+                            <span *ngIf="a===''">Tất cả</span>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 text-right mt-2">Loại khảo sát</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curPartnerCode">
+                        <option *ngFor="let a of partnerCodes" [ngValue]="a">
+                            <span *ngIf="a==''; else elseBlock">Tất cả</span>
+                            <ng-template #elseBlock>{{a}}</ng-template>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Tần suất</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curStatusAgent">
+                        <option *ngFor="let a of statusAgents" [ngValue]="a">
+                            <span *ngIf="a===0">Dừng</span>
+                            <span *ngIf="a===1">Hoạt động</span>
+                            <span *ngIf="a===''">Tất cả</span>
+                        </option>
+                    </select>
+                </div>
+            </div> <!--END ROW-->
+
+            <div class="form-group row mt-5 pl-5 pr-5">
+                <label class="col-1 p-0 m-0 text-right mt-2">User duyệt</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curPartnerCode">
+                        <option *ngFor="let a of partnerCodes" [ngValue]="a">
+                            <span *ngIf="a==''; else elseBlock">Tất cả</span>
+                            <ng-template #elseBlock>{{a}}</ng-template>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Lưu lại lịch sử khảo sát</label>
+                <div class="col-2 text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+                <label class="col-1 p-0 m-0 text-right mt-2">Định danh</label>
+                <div class="col-2 text-right">
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Loại user khảo sát</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curStatusAgent">
+                        <option *ngFor="let a of statusAgents" [ngValue]="a">
+                            <span *ngIf="a===0">Dừng</span>
+                            <span *ngIf="a===1">Hoạt động</span>
+                            <span *ngIf="a===''">Tất cả</span>
+                        </option>
+                    </select>
+                </div>
+            </div> <!--END ROW-->
+
+            <div class="form-group row mt-5 mb-5 pl-5 pr-5">
+                <label class="col-1 p-0 m-0 text-right mt-2">Độ tuổi</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curPartnerCode">
+                        <option *ngFor="let a of partnerCodes" [ngValue]="a">
+                            <span *ngIf="a==''; else elseBlock">Tất cả</span>
+                            <ng-template #elseBlock>{{a}}</ng-template>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Giới tính</label>
+                <div class="col-2">
+                    <select class="form-control p-1" [(ngModel)]="curStatusAgent">
+                        <option *ngFor="let a of statusAgents" [ngValue]="a">
+                            <span *ngIf="a===0">Dừng</span>
+                            <span *ngIf="a===1">Hoạt động</span>
+                            <span *ngIf="a===''">Tất cả</span>
+                        </option>
+                    </select>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-right">Link bộ khảo sát</label>
+                <div class="col-4">
+                    <input class="form-control p-2" type="text" placeholder="Link khảo sát..."
+                           [(ngModel)]="curPartnerName"
+                           (keyup.enter)="onSearchClick()"/>
+                </div>
+                <label class="col-1 p-0 m-0 mt-2 text-left">
+                    <b class="cursor-pointer" style="color: #007bff; text-decoration: underline">Copylink</b>
+                </label>
+            </div> <!--END ROW-->
+
+            <div class="form-group row mt-5 mb-5 pl-5 pr-5">
+                <label class="col-1 p-0 mt-2 text-right">Nhập lời cảm ơn</label>
+                <div class="col-11 mt-2">
+          <textarea class="form-control p-2" type="text" placeholder="Nhập mô tả khảo sát..."
+                    [(ngModel)]="curPartnerName" (keyup.enter)="onSearchClick()"></textarea>
+                </div>
+            </div><!--END ROW-->
+
+
+        </fieldset>
+    </div> <!--END FORM SEARCH-->
+
+    <!--  <div fxLayout fxLayoutAlign="center center">-->
+    <!--    <mat-form-field fxFlex="40%">-->
+    <!--      <input matInput type="text" (change)="doFilter($event.target.value)" placeholder="Filter">-->
+    <!--    </mat-form-field>-->
+    <!--  </div>-->
+
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-2 p-0 m-0 mt-2 ml-15"><b>User Seabank khảo sát</b></label>
+            <div class="col-6"></div>
+            <div class="col-3 p-0 text-right">
+                <button class="mr-2" (click)="openAddDialog()" mat-raised-button color="primary">
+                    <mat-icon style="margin-top: 5px">add</mat-icon>
+                    Sửa
+                </button>
+                <button (click)="openAddDialog()" mat-raised-button color="primary">
+                    <mat-icon style="margin-top: 5px">add</mat-icon>
+                    Import danh sách user
+                </button>
+            </div>
+        </div>
+        <hr style="width:100%;"/>
+    </div>
+
+
+    <div class="card-footer pt-0 pb-0 mb-5">
+        <mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="indexRow">
+                <mat-header-cell *matHeaderCellDef> STT</mat-header-cell>
+                <mat-cell class="align-center"
+                          *matCellDef="let i = index"> {{(paginator.pageIndex * paginator.pageSize) + (i + 1)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="code">
+                <mat-header-cell *matHeaderCellDef> Mã nhân viên</mat-header-cell>
+                <mat-cell class="align-left" *matCellDef="let element"> {{element.code}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Họ tên</mat-header-cell>
+                <mat-cell class="align-left" *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef>Chức danh</mat-header-cell>
+                <mat-cell class="align-left" *matCellDef="let element"> {{element.position}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="place">
+                <mat-header-cell *matHeaderCellDef>Đơn vị</mat-header-cell>
+                <mat-cell class="align-left" *matCellDef="let element"> {{element.place}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                <mat-cell class="align-left" *matCellDef="let element"> {{element.email}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell class="align-center" *matCellDef="let element">
+                    <button mat-icon-button color="primary" matTooltip="Cập nhật" [matTooltipPosition]="position.value"
+                            (click)="openEditDialog(element)">
+                        <mat-icon>create</mat-icon>
+                    </button>
+                    <!---->
+                    <button mat-icon-button color="warn" matTooltip="Xóa" [matTooltipPosition]="position.value"
+                            (click)="onDeleteElement(element)">
+                        <mat-icon class="flaticon2-delete"></mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div class="emptyRecord">
+            <span *ngIf="totalRecords == 0">Không có bản ghi nào</span>
+        </div>
+        <div class="mat-table-bottom">
+            <mat-paginator [length]="totalRecords"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="changePage($event)"
+                           [showFirstLastButtons]="true">
+            </mat-paginator>
+        </div>
+    </div><!--END TABLE-->
+
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-2 p-0 m-0 mt-2 ml-15"><b>Câu hỏi khảo sát</b></label>
+            <div class="col-7"></div>
+            <div class="col-2 p-0 text-right  ">
+                <button (click)="addSection()" mat-raised-button color="warn">
+                    <mat-icon style="margin-top: 5px">add_circle</mat-icon>
+                    Thêm câu hỏi
+                </button>
+            </div>
+        </div>
+        <hr style="width:100%;"/>
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="builder-form">
+                    <ngx-survey-form-builder [form]="form" (changes)="onChange($event)"></ngx-survey-form-builder>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

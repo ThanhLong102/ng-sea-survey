@@ -1,0 +1,40 @@
+<div class="overflow-hidden">
+    <h1 mat-dialog-title>{{item.name}}</h1>
+    <div mat-dialog-content>
+        <div class="mat-dialog-container">
+            <div style="display: none">
+                <ngx-survey #survey
+                            [form]="itemEditForm"
+                            [value]="item"
+                            (valueChange)="onFormChange($event)"
+                            (submit)="onFormSubmit($event)"
+                            [editable]="!readOnly"
+                ></ngx-survey>
+            </div>
+
+            <div class="row d-flex">
+                <div class="border p-3 col-5">
+                    <h4 class="ml-3"> Vui lòng điền thông tin sau:</h4>
+                    <div *ngFor="let item of items">
+                        <app-item-tree [item]="item"
+                                       (chose)="getChoose($event)"
+                        ></app-item-tree>
+                    </div>
+                </div>
+                <div class="border p-2 col-7">
+                    <button mat-raised-button color="primary" *ngFor="let result of results; let i = index"
+                            (click)="remove(i)"
+                            matBadge="" matBadgePosition="before" matBadgeColor="accent">
+                        {{result}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Hủy</button>
+        <button mat-button (click)="onOkClick()" [disabled]="readOnly" cdkFocusInitial>Đồng ý</button>
+    </div>
+
+</div>

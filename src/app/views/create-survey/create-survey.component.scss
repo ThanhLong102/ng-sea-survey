@@ -1,0 +1,70 @@
+.card-footer {
+  border-style: none;
+}
+.mat-raised-button:hover {
+  background-color: #2770B6;
+}
+
+mat-table {
+  width: 100%;
+  position: relative;
+  min-height: 100px;
+  max-height: 450px;
+  overflow: auto;
+}
+
+mat-header-cell {
+  display:flex;
+  justify-content:center;
+  border-right: solid 0.5px #ecf0f3;
+  border-top: solid 0.5px #ecf0f3;
+  font-size: 13px;
+}
+
+mat-cell {
+  display:flex;
+  border-right: solid 0.5px #ecf0f3;
+}
+
+.mat-column-indexRow {
+  flex: none;
+  width: 60px;
+  padding-left: 0;
+  border-left: solid 0.5px #ecf0f3;
+}
+
+.mat-column-partnerCode {
+  flex: none;
+  width: 200px;
+}
+
+.mat-column-statusAgent {
+  flex: none;
+  width: 200px;
+}
+
+.mat-column-actions {
+  flex: none;
+  width: 180px;
+  padding-right: 0;
+}
+
+.emptyRecord {
+  text-align: center;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.align-left {
+  padding-left: 15px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+
+
+

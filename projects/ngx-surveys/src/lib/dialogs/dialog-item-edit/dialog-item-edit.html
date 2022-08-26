@@ -1,0 +1,17 @@
+<div class="m-5 overflow-hidden">
+    <h1 mat-dialog-title>Câu hỏi</h1>
+    <div mat-dialog-content>
+        <ngx-survey #survey
+                    [form]="itemEditForm"
+                    [value]="item"
+                    (valueChange)="onFormChange($event)"
+                    (submit)="onFormSubmit($event)"
+                    [editable]="!readOnly"
+        ></ngx-survey>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Hủy</button>
+        <button mat-button (click)="onOkClick()" [disabled]="readOnly" cdkFocusInitial>Đồng ý</button>
+    </div>
+</div>
+

@@ -1,0 +1,55 @@
+<label *ngIf="item.label" [ngClass]="{'has-error':item.errors && item.errors.length}">{{item.label}} <span
+    class="required" *ngIf="item.required">*</span></label>
+<ng-container *ngIf="item.children && item.children.length">
+    <app-selection-list *ngIf="!item.style || item.style==='list'"
+                        [label]="item.label"
+                        [editable]="editable"
+                        [required]="item.required"
+                        [value]="item.multiple ? item.value : selectedOption"
+                        [options]="item.children"
+                        [multiple]="item.multiple"
+                        (selectionChange)="onSelectionChange($event)"
+    ></app-selection-list>
+    <app-radio-group *ngIf="item.style==='buttons'"
+                     [label]="item.label"
+                     [editable]="editable"
+                     [required]="item.required"
+                     [value]="item.multiple ? item.value : selectedOption"
+                     [options]="item.children"
+                     [multiple]="item.multiple"
+                     [actionUpdatesSectionValue]="item.actionUpdatesSectionValue"
+                     (selectionChange)="onSelectionChange($event)"
+    ></app-radio-group>
+    <app-select *ngIf="item.style==='select'"
+                [label]="item.label"
+                [editable]="editable"
+                [required]="item.required"
+                [value]="item.multiple ? item.value : selectedOption"
+                [options]="item.children"
+                [multiple]="item.multiple"
+                (selectionChange)="onSelectionChange($event)"
+    ></app-select>
+    <app-custom-radio *ngIf="item.style==='custom'"
+                      [label]="item.label"
+                      [editable]="editable"
+                      [required]="item.required"
+                      [value]="item.multiple ? item.value : selectedOption"
+                      [options]="item.children"
+                      [multiple]="item.multiple"
+                      [actionUpdatesSectionValue]="item.actionUpdatesSectionValue"
+                      (selectionChange)="onSelectionChange($event)"
+    ></app-custom-radio>
+    <mat-form-field *ngIf="isExplanationRequired(selectedOption)" class="other-option-field">
+        <mat-label>{{explanationLabel}}</mat-label>
+        <input
+            matInput
+            [(ngModel)]="explanationValue"
+            (ngModelChange)="onExplanationValueChanges($event, selectedOption)"
+        >
+    </mat-form-field>
+</ng-container>
+
+<mat-error *ngIf="item.errors && item.errors.length">
+    <div *ngFor="let error of item.errors">{{error.message}}</div>
+</mat-error>
+<mat-hint align="start" *ngIf="!(item.errors && item.errors.length)"><strong>{{item.hint}}</strong></mat-hint>

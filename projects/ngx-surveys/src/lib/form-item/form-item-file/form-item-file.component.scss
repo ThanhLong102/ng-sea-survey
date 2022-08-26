@@ -1,0 +1,26 @@
+
+:host {
+    margin-top: 10px;
+    display: block;
+    ::ng-deep {
+        .ngx-file-drop__content{
+            display: block!important;
+            text-align: center;
+            padding-top: 8px;
+            .mat-raised-button {
+                margin-top: 5px;
+            }
+        }
+        .file-is-over {
+            .ngx-file-drop__content{
+                display: flex!important;
+                padding-top: 0px;
+            }
+        }
+    }
+}
+
+.files-list-image, .files-list-file {
+    display: flex;
+    flex-flow: wrap;
+}

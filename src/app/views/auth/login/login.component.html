@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-end">
+    <!--begin: Aside header-->
+    <a href="#" class="flex-column-auto mt-2">
+        <img src="./assets/media/logos/logo-dark.png" class="max-h-50px"  alt=""/>
+    </a>
+</div>
+<div class="d-flex flex-column-fluid flex-center" style="margin-top: 8rem">
+    <!--begin::Signin-->
+    <div class="login-form login-signin">
+        <div class="">
+            <h1 class="text-danger" style="margin-bottom: 6rem; font-size: 3rem">SEASURVEY</h1>
+            <b class="font-size-h2" >Vui lòng đăng nhập</b>
+        </div>
+
+        <!--begin::Form-->
+        <form class="form" [formGroup]="loginForm" autocomplete="off" novalidate="novalidate" id="kt_login_form">
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Tên đăng nhập</mat-label>
+                    <input matInput type="text" placeholder="Nhập tên đăng nhập" formControlName="username"/>
+                    <mat-error *ngIf="isControlHasError('username', 'required')">
+                        <!--            <strong>{{ "AUTH.VALIDATION.REQUIRED_FIELD" | translate }}</strong>-->
+                        <strong>Vui lòng nhập tên đăng nhập</strong>
+                    </mat-error>
+                    <!--          <mat-error *ngIf="isControlHasError('email', 'email')">-->
+                    <!--            <strong>{{ "AUTH.VALIDATION.INVALID_FIELD" | translate }}</strong>-->
+                    <!--          </mat-error>-->
+                    <!--          <mat-error *ngIf="isControlHasError('email', 'minlength')">-->
+                    <!--            <strong>{{ "AUTH.VALIDATION.MIN_LENGTH_FIELD" | translate }} 3</strong>-->
+                    <!--          </mat-error>-->
+                    <!--          <mat-error *ngIf="isControlHasError('email', 'maxlength')">-->
+                    <!--            <strong>{{ "AUTH.VALIDATION.MAX_LENGTH_FIELD" | translate }} 320</strong>-->
+                    <!--          </mat-error>-->
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Mật khẩu</mat-label>
+                    <input matInput type="password" placeholder="Nhập mật khẩu" formControlName="password" />
+                    <mat-error *ngIf="isControlHasError('password', 'required')">
+                        <!--            <strong>{{ "AUTH.VALIDATION.REQUIRED_FIELD" | translate }}</strong>-->
+                        <strong>Vui lòng nhập mật khẩu</strong>
+                    </mat-error>
+                    <!--          <mat-error *ngIf="isControlHasError('password', 'minlength')">-->
+                    <!--            <strong>{{ "AUTH.VALIDATION.MIN_LENGTH_FIELD" | translate }} 3</strong>-->
+                    <!--          </mat-error>-->
+                    <!--          <mat-error *ngIf="isControlHasError('password', 'maxlength')">-->
+                    <!--            <strong>{{ "AUTH.VALIDATION.MAX_LENGTH_FIELD" | translate }} 100</strong>-->
+                    <!--          </mat-error>-->
+                </mat-form-field>
+            </div>
+            <!--begin::Action-->
+
+            <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                <button id="kt_login_signin_submit" [disabled]="!loginForm.valid"  (click)="submit()" class="btn font-weight-bold px-40 py-3 my-3" style="background-color: #d7242a; color:white">Đăng nhập</button>
+            </div>
+            <!--end::Action-->
+        </form>
+
+        <!--end::Form-->
+    </div>
+    <!--end::Signin-->
+</div>

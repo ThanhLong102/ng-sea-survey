@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="d-flex overflow-hidden" >
+    <mat-tab-group class="builder-tabs" mat-align-tabs="start">
+        <mat-tab *ngFor="let menu of menus; let i = index">
+            <ng-template mat-tab-label style="background: white">
+                <div (click)="changePage(menu.url)">
+                    <mat-icon>settings</mat-icon>
+                    {{menu.name}}
+                </div>
+            </ng-template>
+
+        </mat-tab>
+
+    </mat-tab-group>
+    <div class="mt-5 ml-5" style="max-width: 90%; width: 87%;">
+        <router-outlet></router-outlet>
+        <div style="height: 3rem"></div>
+    </div>
+</div>
+
+
+
+
